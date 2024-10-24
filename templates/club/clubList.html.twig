@@ -1,0 +1,33 @@
+<html>
+<head></head>
+<body>
+        <h1>Liste des Clubs</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Référence</th>
+                        <th>Nom</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for club in clubs %}
+                        <tr>
+                            <td>{{ club.ref }}</td>
+                            <td>{{ club.name }}</td>
+                            <td>
+                                <a href="{{ path('app_add_player', { 'id': club.id }) }}">Ajouter Joueur</a> |
+                                <a href="{{ path('app_remove_player', { 'id': club.id }) }}">Supprimer Joueur</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">Aucun club trouvé.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+</body>
+</html>
+
